@@ -1,0 +1,5 @@
+God Send Jelp on Canvas 2D
+- https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+
+game.js
+	http://collabedit.com/2cnr4

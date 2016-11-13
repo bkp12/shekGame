@@ -1,0 +1,85 @@
+<HTML>
+
+<HEAD>
+  <TITLE>Shek</TITLE>
+  <style>
+
+  body {
+    background-color:black;
+  }
+
+  .noShow {
+    display:none;
+  }
+
+  #instructions {
+    text-align:center;
+    color:white;
+  }
+
+  #canvas {
+    background-color:white;
+  }
+
+  #contain {
+    width:1280px;
+    height:640px;
+    margin:auto;
+  }
+
+  </style>
+</HEAD>
+
+<BODY>
+  <BR>
+  <div id="contain">
+    <canvas id="canvas" width="1280" height="640"></canvas>
+  </div>
+  <h1 id="instructions">Refresh the page to restart the game</h1>
+
+  <!-- ==========================================SCRIPT LOADING================================================ -->
+
+  <IMG SRC="assets/shek/Sprite/ShFront.png" class="noShow" id="shek"> <!-- MAKE SURE TO GIVE ALL ASSETS A CLASS AND ID -->
+  <IMG SRC="assets/shek/startMenu.png" class="noShow" id="startMenu">
+  <IMG SRC="assets/shek/dirt.png" class="noShow" id="startMenu">
+  <IMG SRC="assets/shek/grass.png" class="noShow" id="grass">
+  <IMG SRC="assets/shek/dirt.png" class="noShow" id="dirt">
+  <IMG SRC="assets/shek/Flag.png" class="noShow" id="flag">
+  <IMG SRC="assets/shek/shovelIcon.png" class="noShow" id="shovelIcon">
+  <IMG SRC="assets/shek/BridgeIcon.png" class="noShow" id="bridgeIcon">
+  <IMG SRC="assets/shek/swampBG.png" class="noShow" id="background">
+  <IMG SRC="assets/shek/inventory.png" class="noShow" id="inventory">
+  <IMG SRC="assets/shek/wall.png" class="noShow" id="wall">
+  <IMG SRC="assets/shek/jumpArrowIcon.png" class="noShow" id="jumpArrow">
+  <IMG SRC="assets/shek/Sprite/WalkR1.png" class="noShow" id="shekWalkR1">
+  <IMG SRC="assets/shek/Sprite/WalkR2.png" class="noShow" id="shekWalkR2">
+  <IMG SRC="assets/shek/Sprite/WalkR3.png" class="noShow" id="shekWalkR3">
+  <IMG SRC="assets/shek/Sprite/WalkR4.png" class="noShow" id="shekWalkR4">
+  <IMG SRC="assets/shek/Sprite/WalkR5.png" class="noShow" id="shekWalkR5">
+  <IMG SRC="assets/shek/Sprite/WalkR6.png" class="noShow" id="shekWalkR6">
+  <IMG SRC="assets/shek/jumpArrowIcon.png" class="noShow" id="jumpArrow">
+  <IMG SRC="assets/shek/Sprite/WalkL1.png" class="noShow" id="shekWalkR1">
+  <IMG SRC="assets/shek/Sprite/WalkL2.png" class="noShow" id="shekWalkR2">
+  <IMG SRC="assets/shek/Sprite/WalkL3.png" class="noShow" id="shekWalkR3">
+  <IMG SRC="assets/shek/Sprite/WalkL4.png" class="noShow" id="shekWalkR4">
+  <IMG SRC="assets/shek/Sprite/WalkL5.png" class="noShow" id="shekWalkR5">
+  <IMG SRC="assets/shek/Sprite/WalkL6.png" class="noShow" id="shekWalkR6">
+  <IMG SRC="assets/shek/Sprite/InAir.png" class="noShow" id="shekJump3">
+  <IMG SRC="assets/shek/Sprite/Jump1.png" class="noShow" id="shekJump1">
+  <IMG SRC="assets/shek/Sprite/Jump2.png" class="noShow" id="shekJump2">
+  <IMG SRC="assets/shek/tutorialBox.png" class="noShow" id="tutorial">
+  <!-- ==========================================ASSETS LOADING================================================ -->
+
+  <script src="assets/scripts/game.js"></script>
+  <script src="assets/scripts/class.js"></script>
+  <script src="assets/scripts/instantiate.js"></script>
+  <script src="assets/scripts/draw.js"></script>
+  <script src="assets/scripts/update.js"></script>
+  <script src="assets/scripts/physics.js"></script>
+  <script src="assets/scripts/controls.js"></script>
+  <script src="assets/scripts/UI.js"></script>
+  <script src="assets/scripts/audio.js"></script>
+  <script src="assets/scripts/tutorial.js"></script>
+</BODY>
+
+</HTML>
