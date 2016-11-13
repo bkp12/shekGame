@@ -5,12 +5,14 @@ var levelPlay = false;
 var gravConstant = 0.0013;
 var scrollX = 0; //-300
 var scrollSpeed = 0.13;
+var scrollSpeedMultiplier = 1;
 var mousex;
 var mousey;
 var titleMode = false; //should be true
 var currentLevel = 0; //Make sure to change this according to the level, do not initiliaze it as 0
 var isLoaded = false;
 var isDead = false;
+var jumpNum = 1;
 //=========================================================
 
 var game = { //i created an object which will contain general game properties
@@ -21,10 +23,11 @@ var game = { //i created an object which will contain general game properties
 function gameObj(x, y, i) { //this object will be a PARENT to the player object.
   this.xpos = x; //stands for x position on the screen
   this.ypos = y; //y position (measured from the top left corner, so it increases as an object moves down the screen)
-  this.id = i; //the id MUST be the same as the id attribute of the basketball image in the index.html page
+  this.id = i; 
 
   this.draw = function () { //this is the draw function (a method of the gameObj object)
     var img = document.getElementById(this.id); //creates a variable reference to the image linked by its "ID"
+
     ctx.drawImage(img, this.xpos - scrollX, this.ypos);
     //will draw the image using the xpos and ypos of the object
     this.width = img.width;

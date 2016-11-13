@@ -10,16 +10,19 @@ function update() { //before the tick draws, it will update all the objects on t
   /*for(var index = 0; i < jumpBlocks.???; i++){        PLACEHOLDER!!
     collsion(player1, jumpBlocks)
 }*/
+
+  drawText();
   deathCheck();
   scroll(); //constantly scrolls the stage with shrek
   scrollException();
   animShek();
   updateJumpBlock();
+  checkFlag();
 }
 
 function scroll() {
   if (levelPlay) {
-    scrollX += scrollSpeed * game.dt;
+    scrollX += scrollSpeed * game.dt * scrollSpeedMultiplier;
   }
 }
 
@@ -39,7 +42,7 @@ function updateJumpBlock() {
   }
 
   for (var i = 0; i < jumpBlocks.length; i ++) {
-    if (collision(jumpBlocks[i], player1) ) {
+    if (collision(jumpBlocks[i], player1) && jumpBlocks[i].beingPlaced == false) {
       jumpBlocks[i].exists = false;
       if (player1.onGround == true) {
         player1.onGround = false;
@@ -57,7 +60,7 @@ function updateJumpBlock() {
 function scrollException() {
   for (var i = 0; i < scrollExceptionObjects.length; i ++) {
     if (scrollExceptionObjects[i].frame != undefined) {
-      scrollExceptionObjects[i].xpos = scrollX + 100;
+      scrollExceptionObjects[i].xpos = scrollX + 200;
     } else if (scrollExceptionObjects[i].id == "inventory") {
       scrollExceptionObjects[i].xpos = scrollX + 1020;
     } else if (scrollExceptionObjects[i].id == "jumpArrow") {
@@ -71,11 +74,6 @@ function scrollException() {
 }
 
 function animShek() {
-
-
-
-}
-function animShek() {
   if (levelPlay && player1.onGround == true) {
     if(scrollSpeed > 0)
     {
@@ -85,7 +83,7 @@ function animShek() {
         player1.frame = 1;
     }
     }
-    if(scrollSpeed<0)
+    if(scrollSpeed < 0)
     {
       player1.id = "shekWalkL" + Math.floor(player1.frame);
       player1.frame += 0.1;
@@ -94,38 +92,49 @@ function animShek() {
       }
     }
   } else if (player1.onGround == false) {
-    player1.id = "shekJump3";
+    if(scrollSpeed > 0)
+      player1.id = "shekJump3";
+    if(scrollSpeed < 0)
+      player1.id = "shekJumpL";
   } else {
     player1.id = "shek";
+  }
+
+  if (player1.dancing == true) {
+    player1.frame += 0.1;
+    if (player1.frame >= dancingArray.length) {
+      player1.frame = 0;
+    }
+    player1.id = dancingArray[Math.floor(player1.frame)];
   }
 }
 
 function nextLevel() {
   levelFinish = false;
+  isDrawingTutorial = true;
+  tutorial.ypos = 0;
   currentLevel += 1;
   isLoaded = false;
+  loadInventory();
   var player1 = new player(200, 360);
+  player1.frame = 0;
   scrollSpeed = 0.13;
   scrollX = 0;
   levelPlay = false;
   isDead = false;
-}
-
-function swiper(x) {
-  var num = x;
-  for(var i = 0; i < x; i++)
-  {
-    console.log("swiper no swiping");
-  }
 }
 
 function reloadLevel() {
-  var player1 = new player(200, 360);
-  scrollSpeed = 0.13;
+  player1.xpos = 200;
+  player1.ypos = 360;
   scrollX = 0;
   levelPlay = false;
   isDead = false;
-  swiper(100);
+
+  for(var i = 0; i < jumpBlocks.length; i++ )
+    jumpBlocks[i].exists = false;
+
+  loadInventory();
 }
 
 function deathCheck() {
@@ -133,6 +142,14 @@ function deathCheck() {
   {
     isDead = true;
     reloadLevel();
-    player1.ypos = 360;
   }
+}
+
+function checkFlag() {
+    if (collision(player1, flag) && player1.dancing == false) {
+      scrollSpeed = 0;
+      player1.dancing = true;
+      setTimeout(nextLevel, 5000);
+      setTimeout(function() {player1.dancing = false; player1.frame = 1;}, 5002);
+    }
 }

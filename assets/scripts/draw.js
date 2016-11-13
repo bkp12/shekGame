@@ -1,5 +1,4 @@
-window.addEventListener("keydown",clearTutorial,false);
-var drawTutorial = true
+var isDrawingTutorial = true;
 
 function draw() { //clear and redraw the entire screen every frame tick
   clearScreen();
@@ -10,14 +9,17 @@ function draw() { //clear and redraw the entire screen every frame tick
   } else {
     drawTitle();
   }
+  generateStageCheck();
   drawText();
-  if (drawTutorial) {
+  if (isDrawingTutorial) {
     drawTutorial();
   };
-  if (!drawTutorial && objectsToDraw[4].id == "tutorial") {
+  if (!isDrawingTutorial && objectsToDraw[4].id == "tutorial") {
     objectsToDraw[4].ypos = -500;
   }
-  generateStageCheck();
+
+
+
 }
 
 function clearScreen() { //will clear the entire screen, erase everything on it
@@ -26,8 +28,4 @@ function clearScreen() { //will clear the entire screen, erase everything on it
 
 function drawTitle() {
 
-}
-
-function clearTutorial() {
-  drawTutorial = false;
 }
